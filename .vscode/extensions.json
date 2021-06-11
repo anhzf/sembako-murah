@@ -3,6 +3,9 @@
     "bmewburn.vscode-intelephense-client",
     "amiralizadeh9480.laravel-extra-intellisense",
     "editorconfig.editorconfig",
-    "vivaxy.vscode-conventional-commits"
+    "vivaxy.vscode-conventional-commits",
+    "mikestead.dotenv",
+    "dbaeumer.vscode-eslint",
+    "onecentlin.laravel-blade"
   ]
 }

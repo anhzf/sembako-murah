@@ -2,5 +2,10 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
-  }
+  },
+  "eslint.validate": [
+    "javascript",
+    "vue"
+  ],
+  "vetur.validation.template": false
 }
