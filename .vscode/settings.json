@@ -9,6 +9,7 @@
   ],
   "vetur.validation.template": false,
   "conventionalCommits.scopes": [
-    "db"
+    "db",
+    "ui"
   ]
 }

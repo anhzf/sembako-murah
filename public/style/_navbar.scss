@@ -1,0 +1,42 @@
+.navbar-store {
+  padding-top: 15px;
+
+  //   background navbar berwarna putih ketika browser berukuran medium
+  @include media-breakpoint-down(lg) {
+    background-color: #fff !important;
+  }
+
+  .nav-item {
+    .nav-link {
+      // jika berukuran lg, diberi margin left dan right
+      @include media-breakpoint-up(lg) {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  // membatasi ukuran profile picture
+  .profile-picture {
+    max-height: 45px;
+  }
+
+  //   style untuk keranjang belanja
+  .card-badge {
+    display: inline-block;
+    min-width: 2em;
+    padding: 0.3em;
+    border-radius: 50%;
+    font-size: 10px;
+    text-align: center;
+    background: #29a867;
+    color: #fefefe;
+    margin-left: -10px;
+  }
+}
+
+//   Setelah di Scroll akan ada background nya, dengan transisi 0,2 detik secara linier
+.navbar-fixed-top.scrolled {
+  background-color: #ddd !important;
+  transition: background-color 200ms linear;
+}
