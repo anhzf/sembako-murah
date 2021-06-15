@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.front')
 
 @section('title')
-Sembako Murah
+Categories
 @endsection
 
 @section('content')

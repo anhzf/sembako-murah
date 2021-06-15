@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.front')
 
 @section('title')
 Detail Page
@@ -103,7 +103,7 @@ Detail Page
           <div class="col-12 col-lg-8">
             <ul class="list-unstyled">
               <li class="media d-flex align-items-start">
-                <img src="./images/user_pc.svg" class="mr-3 rounded-circle me-3" alt="..." />
+                <img src="{{ url('images/user_pc.svg') }}" class="mr-3 rounded-circle me-3" alt="..." />
                 <div class="media-body">
                   <h5 class="mt-0 mb-1">Ramadhan Fahmi Habibi</h5>
                   <p>
@@ -117,7 +117,8 @@ Detail Page
                 </div>
               </li>
               <li class="media d-flex align-items-start">
-                <img src="./images/user_pc.svg" class="align-self-start mr-3 rounded-circle me-3" alt="..." />
+                <img src="{{ url('images/user_pc.svg') }}" class="align-self-start mr-3 rounded-circle me-3"
+                  alt="..." />
                 <div class="media-body">
                   <h5 class="mt-0 mb-1">Alwan Nuha</h5>
                   <p>
@@ -130,7 +131,7 @@ Detail Page
                 </div>
               </li>
               <li class="media d-flex align-items-start">
-                <img src="./images/user_pc.svg" class="mr-3 rounded-circle me-3" alt="..." />
+                <img src="{{ url('images/user_pc.svg') }}" class="mr-3 rounded-circle me-3" alt="..." />
                 <div class="media-body">
                   <h5 class="mt-0 mb-1">Hamid Yahya</h5>
                   <p>
@@ -141,7 +142,7 @@ Detail Page
                 </div>
               </li>
               <li class="media d-flex align-items-start">
-                <img src="./images/user_pc.svg" class="mr-3 rounded-circle me-3" alt="..." />
+                <img src="{{ url('images/user_pc.svg') }}" class="mr-3 rounded-circle me-3" alt="..." />
                 <div class="media-body">
                   <h5 class="mt-0 mb-1">Alvin Kurniawan</h5>
                   <p>
