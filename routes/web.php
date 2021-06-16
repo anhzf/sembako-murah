@@ -23,19 +23,26 @@ use Illuminate\Support\Facades\Route;
 //   return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])
+  ->name('home');
 
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+Route::get('/categories', [CategoryController::class, 'index'])
+  ->name('categories');
 
-Route::get('/details/{id}', [DetailController::class, 'index'])->name('detail');
+Route::get('/details/{id}', [DetailController::class, 'index'])
+  ->name('detail');
 
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::get('/cart', [CartController::class, 'index'])
+  ->name('cart');
 
-Route::get('/success', [CartController::class, 'success'])->name('success');
+Route::get('/success', [CartController::class, 'success'])
+  ->name('success');
 
-Route::get('/register/success', [RegisterController::class, 'success'])->name('register-success');
+Route::get('/register/success', [RegisterController::class, 'success'])
+  ->name('register-success');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+  ->name('dashboard');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
