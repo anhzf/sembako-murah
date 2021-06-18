@@ -10,6 +10,7 @@
   "vetur.validation.template": false,
   "conventionalCommits.scopes": [
     "db",
-    "ui"
+    "ui",
+    "model"
   ]
 }

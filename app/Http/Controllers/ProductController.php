@@ -14,17 +14,6 @@ class ProductController extends Controller
    */
   public function index()
   {
-    $product = new Product();
-
-    $product->name = 'dasdas';
-    $product->price = 21313;
-    $product->description = 'dasdas';
-    $product->photos = ['dasdas'];
-    $product->category_id = 1;
-
-    dd($product->save());
-    // dd(Product::factory()->make());
-
     return response()->json(Product::all());
   }
 

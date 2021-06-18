@@ -19,14 +19,17 @@ class Product extends Model
     'meta' => 'array',
   ];
 
-  /**
-   * The model's default values for attributes.
-   *
-   * @var array
-   */
-  protected $attributes = [
-    'meta' => [],
-  ];
+  public function __construct(array $attributes = [])
+  {
+    parent::__construct($attributes + $this->getDefaultAttributes());
+  }
+
+  protected function getDefaultAttributes()
+  {
+    return [
+      'meta' => [],
+    ];
+  }
 
   /**
    * Get the category that owns the product.
