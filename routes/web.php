@@ -4,6 +4,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DashboardProductController;
+use App\Http\Controllers\DashboardSettingController;
 
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -33,6 +35,12 @@ Route::get('/success', [CartController::class, 'success'])->name('success');
 Route::get('/register/success', [RegisterController::class, 'success'])->name('register-success');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/dashboard/products', [DashboardProductController::class, 'index'])->name('dashboard-product');
+Route::get('/dashboard/products/add', [DashboardProductController::class, 'addmenu'])->name('dashboard-product-addmenu');
+Route::get('/dashboard/products/{id}', [DashboardProductController::class, 'detail'])->name('dashboard-product-detail');
+
+Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])->name('dashboard-setting-account');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
