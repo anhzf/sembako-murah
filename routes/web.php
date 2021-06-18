@@ -8,7 +8,6 @@ use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardSettingController;
 
 use App\Http\Controllers\Auth\RegisterController;
-
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,18 +22,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+// Route::get('/', function () {
+//   return view('welcome');
+// });
 
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+Route::get('/', [HomeController::class, 'index'])
+  ->name('home');
 
-Route::get('/details/{id}', [DetailController::class, 'index'])->name('detail');
+Route::get('/categories', [CategoryController::class, 'index'])
+  ->name('categories');
 
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
-Route::get('/success', [CartController::class, 'success'])->name('success');
+Route::get('/details/{id}', [DetailController::class, 'index'])
+  ->name('detail');
 
-Route::get('/register/success', [RegisterController::class, 'success'])->name('register-success');
+Route::get('/cart', [CartController::class, 'index'])
+  ->name('cart');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/success', [CartController::class, 'success'])
+  ->name('success');
+
+Route::get('/register/success', [RegisterController::class, 'success'])
+  ->name('register-success');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])
+  ->name('dashboard');
 
 Route::get('/dashboard/products', [DashboardProductController::class, 'index'])->name('dashboard-product');
 Route::get('/dashboard/products/add', [DashboardProductController::class, 'addmenu'])->name('dashboard-product-addmenu');
@@ -46,4 +57,4 @@ Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
