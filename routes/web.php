@@ -48,7 +48,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
   ->name('dashboard');
 
 Route::get('/dashboard/products', [DashboardProductController::class, 'index'])->name('dashboard-product');
+
 Route::get('/dashboard/products/add', [DashboardProductController::class, 'addmenu'])->name('dashboard-product-addmenu');
+
 Route::get('/dashboard/products/{id}', [DashboardProductController::class, 'detail'])->name('dashboard-product-detail');
 
 Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])->name('dashboard-setting-account');
