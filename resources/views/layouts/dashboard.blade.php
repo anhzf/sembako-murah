@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@yield('title')</title>
+  <title>@yield('title', 'Dashboard')</title>
 
   @stack('prep-style')
   @include('includes.style')
@@ -25,16 +25,27 @@
         @include('includes.dashboard.navigation')
 
         <!-- Section Content -->
-        @yield('content')
+        <div class="section-content section-dashboard-home" data-aos="fade-up">
+          <div class="container-fluid">
+            <div class="dashboard-heading">
+              <h2 class="dashboard-title">@yield('dashboard-title')</h2>
+              <p class="dashboard-subtitle">@yield('dashboard-subtitle')</p>
+            </div>
+            <div class="dashboard-content">
+              @yield('content')
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    $("#menu-toggle").click(function (e) {
-          e.preventDefault();
-          $("#wrapper").toggleClass("toggled");
-        });
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+
   </script>
   @stack('prep-script')
   @include('includes.script')

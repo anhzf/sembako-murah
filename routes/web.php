@@ -1,12 +1,6 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DetailController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\DashboardProductController;
-use App\Http\Controllers\DashboardSettingController;
-use App\Http\Controllers\DashboardController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,19 +18,19 @@ use Illuminate\Support\Facades\Route;
 //   return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index'])
+Route::view('/', 'pages.home')
   ->name('home');
 
-Route::get('/categories', [CategoryController::class, 'index'])
+Route::view('/categories', 'pages.category')
   ->name('categories');
 
-Route::get('/details/{id}', [DetailController::class, 'index'])
+Route::view('/details/{id}', 'pages.details')
   ->name('detail');
 
-Route::get('/cart', [CartController::class, 'index'])
+Route::view('/cart', 'pages.cart')
   ->name('cart');
 
-Route::get('/success', [CartController::class, 'success'])
+Route::view('/success', 'pages.success')
   ->name('success');
 
 Route::prefix('/dashboard')
@@ -44,24 +38,24 @@ Route::prefix('/dashboard')
   ->middleware('auth')
   ->group(function () {
 
-    Route::get('/', [DashboardController::class, 'index'])
+    Route::view('/', 'pages.dashboard.index')
       ->name('index');
 
-    Route::get('/account', [DashboardSettingController::class, 'account'])
+    Route::view('/account', 'pages.dashboard.account-settings')
       ->name('setting-account');
 
     Route::prefix('/products')
       ->name('products.')
       ->group(function () {
 
-        Route::get('/', [DashboardProductController::class, 'index'])
+        Route::view('/', 'pages.dashboard.products-list', ['products' => Product::all()])
           ->name('index');
 
-        Route::get('/add', [DashboardProductController::class, 'addmenu'])
-          ->name('add');
-
-        Route::get('/{id}', [DashboardProductController::class, 'detail'])
+        Route::view('/{id}', 'pages.dashboard.products-detail')
           ->name('detail');
+
+        Route::view('/add', 'pages.dashboard.products-create')
+          ->name('add');
       });
   });
 

@@ -22,12 +22,14 @@ class ProductFactory extends Factory
    */
   public function definition()
   {
+    $name = $this->faker->words(2, true);
+
     return [
-      'name' => collect($this->faker->words(2, true))->join(' '),
+      'name' => $name,
       'price' => $this->faker->numberBetween(1000),
       'description' => $this->faker->sentences(3, true),
       'photos' => [
-        $this->faker->imageUrl()
+        $this->faker->imageUrl(250, 250, $name, true)
       ],
       'category_id' => Category::factory(),
     ];

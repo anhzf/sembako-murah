@@ -19,6 +19,20 @@ class Product extends Model
     'meta' => 'array',
   ];
 
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+    'name',
+    'price',
+    'description',
+    'category_id',
+    'photos',
+    'meta',
+  ];
+
   public function __construct(array $attributes = [])
   {
     parent::__construct($attributes + $this->getDefaultAttributes());

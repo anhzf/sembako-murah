@@ -15,11 +15,11 @@ $navItems = [
     ],
     [
         'label' => 'My Account',
-        'to' => '/dashboard-account.html',
+        'to' => route('dashboard.setting-account'),
     ],
     [
         'label' => 'Store Setting',
-        'to' => route('dashboard.setting-account'),
+        'to' => '/dashboard-store-setting.html',
     ],
 ];
 @endphp
