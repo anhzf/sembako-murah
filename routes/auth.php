@@ -17,6 +17,9 @@ Route::get('/register', [RegisteredUserController::class, 'create'])
 Route::post('/register', [RegisteredUserController::class, 'store'])
   ->middleware('guest');
 
+Route::view('/register/success', 'pages.auth.success')
+  ->name('register-success');
+
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
   ->middleware('guest')
   ->name('login');

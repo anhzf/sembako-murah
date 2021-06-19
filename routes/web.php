@@ -6,8 +6,6 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardSettingController;
-
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,19 +39,32 @@ Route::get('/cart', [CartController::class, 'index'])
 Route::get('/success', [CartController::class, 'success'])
   ->name('success');
 
-Route::get('/register/success', [RegisterController::class, 'success'])
-  ->name('register-success');
+Route::prefix('/dashboard')
+  ->name('dashboard.')
+  ->middleware('auth')
+  ->group(function () {
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
-  ->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])
+      ->name('index');
 
-Route::get('/dashboard/products', [DashboardProductController::class, 'index'])->name('dashboard-product');
+    Route::get('/account', [DashboardSettingController::class, 'account'])
+      ->name('setting-account');
 
-Route::get('/dashboard/products/add', [DashboardProductController::class, 'addmenu'])->name('dashboard-product-addmenu');
+    Route::prefix('/products')
+      ->name('products.')
+      ->group(function () {
 
-Route::get('/dashboard/products/{id}', [DashboardProductController::class, 'detail'])->name('dashboard-product-detail');
+        Route::get('/', [DashboardProductController::class, 'index'])
+          ->name('index');
 
-Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])->name('dashboard-setting-account');
+        Route::get('/add', [DashboardProductController::class, 'addmenu'])
+          ->name('add');
+
+        Route::get('/{id}', [DashboardProductController::class, 'detail'])
+          ->name('detail');
+      });
+  });
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
