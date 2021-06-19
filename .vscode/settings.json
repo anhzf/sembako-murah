@@ -12,6 +12,8 @@
     "db",
     "ui",
     "model",
-    "page"
-  ]
+    "page",
+    "routes"
+  ],
+  "bladeFormatter.format.indentSize": 2
 }

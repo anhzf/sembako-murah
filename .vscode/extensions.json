@@ -6,6 +6,7 @@
     "vivaxy.vscode-conventional-commits",
     "mikestead.dotenv",
     "dbaeumer.vscode-eslint",
-    "onecentlin.laravel-blade"
+    "onecentlin.laravel-blade",
+    "shufo.vscode-blade-formatter"
   ]
 }

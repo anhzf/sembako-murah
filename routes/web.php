@@ -51,11 +51,11 @@ Route::prefix('/dashboard')
         Route::view('/', 'pages.dashboard.products-list', ['products' => Product::all()])
           ->name('index');
 
-        Route::view('/{id}', 'pages.dashboard.products-detail')
-          ->name('detail');
-
         Route::view('/add', 'pages.dashboard.products-create')
           ->name('add');
+
+        Route::view('/{id}', 'pages.dashboard.products-detail')
+          ->name('detail');
       });
   });
 
