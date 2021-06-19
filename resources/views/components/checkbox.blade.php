@@ -1,21 +1,21 @@
-@props(['label' => '', 'inputClass' => '', 'id' => Str::uuid(), 'value' => isset($attributes['name']) ?? old($attributes['name'])])
+@props(['label' => '', 'checkboxClass' => '', 'id' => Str::uuid(), 'value' => isset($attributes['name']) ?? old($attributes['name'])])
 
 @php
 $_isInvalidInput = isset($attributes['name']) && $errors->has($attributes['name']);
-$_validationClassName = $_isInvalidInput ? 'is-invalid' : '';
 $_containerAttributes = $attributes->filter(fn($v, $k) => $k === 'class')->merge([
-    'class' => 'form-group',
+    'class' => 'form-check',
 ]);
 $_inputAttributes = $attributes->filter(fn($v, $k) => $k !== 'class')->merge([
     'label' => $label,
     'id' => $id,
-    'class' => "form-control {$inputClass} {$_validationClassName}",
+    'type' => 'checkbox',
+    'class' => "form-check-input {$checkboxClass}",
 ]);
 @endphp
 
 <div {!! $_containerAttributes !!}>
-  <label for="{{ $id }}">{{ $label }}</label>
   <input {!! $_inputAttributes !!} />
+  <label for="{{ $id }}" class="form-check-label">{{ $label }}</label>
 
   {{-- validation message if already --}}
   @if ($_isInvalidInput)

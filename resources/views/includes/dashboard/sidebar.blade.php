@@ -24,8 +24,6 @@ $navItems = [
 ];
 @endphp
 
-{{-- @dd(Route::current(), route('dashboard.index'), url()->current()) --}}
-
 <div class="border-end" id="sidebar-wrapper">
   <div class="sidebar-heading text-center">
     <img src="/images/logo.svg" alt="" class="my-4" />
