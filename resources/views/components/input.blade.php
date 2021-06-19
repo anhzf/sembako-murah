@@ -1,15 +1,16 @@
-@props(['label' => '', 'inputClass' => '', 'id' => Str::uuid(), 'value' => isset($attributes['name']) ?? old($attributes['name'])])
+@props(['label' => '', 'inputClass' => '', 'id' => Str::uuid()])
 
 @php
 $_isInvalidInput = isset($attributes['name']) && $errors->has($attributes['name']);
 $_validationClassName = $_isInvalidInput ? 'is-invalid' : '';
-$_containerAttributes = $attributes->filter(fn($v, $k) => $k === 'class')->merge([
+$_containerAttributes = $attributes->only(['class'])->merge([
     'class' => 'form-group',
 ]);
-$_inputAttributes = $attributes->filter(fn($v, $k) => $k !== 'class')->merge([
+$_inputAttributes = $attributes->except(['class'])->merge([
     'label' => $label,
     'id' => $id,
     'class' => "form-control {$inputClass} {$_validationClassName}",
+    'value' => old($attributes['name']),
 ]);
 @endphp
 

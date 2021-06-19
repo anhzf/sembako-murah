@@ -12,78 +12,75 @@
   Update your current profiles
 @endsection
 
+@php
+$mapToOptions = function (array $data) {
+    array_walk($data, function (&$item) {
+        $item = [
+            'label' => $item['nama'],
+            'value' => $item['id'],
+        ];
+    });
+
+    return $data;
+};
+@endphp
 
 @section('content')
   <div class="row">
     <div class="col-12">
-      <form action="">
+      <form method="POST" action="{{ route('dashboard.setting-account') }}">
+        @csrf
+
         <div class="card">
           <div class="card-body">
             <!-- Isi -->
             <div class="row mb-3">
               <div class="col-md-6">
-                <div class="form-group">
-                  <label for="name"> Your Name</label>
-                  <input type="text" class="form-control" id="name" name="name"
-                    placeholder="Masukkan Nama lengkap Anda" />
-                </div>
+                <x-input label="Your Name" type="text" name="name" placeholder="Masukkan Nama Lengkap Anda"
+                  value="{{ Auth::user()->name }}" disabled />
               </div>
+
               <div class="col-md-6">
-                <div class="form-group">
-                  <label for="email"> Your Email</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email Anda" />
-                </div>
+                <x-input label="Your Email" type="email" name="email" placeholder="Masukkan Email Anda"
+                  value="{{ Auth::user()->email }}" disabled />
               </div>
+
               <div class="col-md-6">
-                <div class="form-group">
-                  <label for="addressOne"> Address 1</label>
-                  <input type="text" class="form-control" id="addressOne" name="addressOne"
-                    placeholder="Masukkan alamat utama anda" />
-                </div>
+                <x-input label="Address 1" type="text" name="address_one" placeholder="Masukkan Alamat Utama Anda"
+                  value="{{ Auth::user()->address_one }}" />
               </div>
+
               <div class="col-md-6">
-                <div class="form-group">
-                  <label for="addressTwo"> Address 2</label>
-                  <input type="text" class="form-control" id="addressTwo" name="addressTwo"
-                    placeholder="Masukkan Alamat anda" />
-                </div>
+                <x-input label="Address 2" type="text" name="address_two" placeholder="Masukkan Alamat Anda"
+                  value="{{ Auth::user()->address_two }}" />
               </div>
+
               <div class="col-md-4">
-                <div class="form-group">
-                  <label for="province">Province</label>
-                  <select name="province" id="province" class="form-control">
-                    <option value="West Java">Jawa Barat</option>
-                  </select>
-                </div>
+                <x-select label="Province" name="province_id" :options="$mapToOptions($provinceList)"
+                  value="{{ Auth::user()->province_id }}" />
               </div>
+
               <div class="col-md-4">
-                <div class="form-group">
-                  <label for="city">City</label>
-                  <select name="city" id="city" class="form-control">
-                    <option value="Bandung">Bandung</option>
-                  </select>
-                </div>
+                <x-select label="City" name="regency_id" :options="$mapToOptions($cityList)"
+                  value="{{ Auth::user()->regency_id }}" />
               </div>
+
               <div class="col-md-4">
-                <div class="form-group">
-                  <label for="postalCode">
-                    Post <code></code></label>
-                  <input type="text" class="form-control" id="postalCode" name="postelCode" placeholder="57773" />
-                </div>
+                <x-input label="Zip Code" type="text" name="zip_code" placeholder="57773"
+                  value="{{ Auth::user()->zip_code }}" />
               </div>
+
               <div class="col-md-6">
-                <div class="form-group">
-                  <label for="country">Country</label>
-                  <input type="text" class="form-control" id="country" name="country" placeholder="Indonesia" />
-                </div>
+                <x-input label="Country" type="text" name="country" placeholder="Indonesia"
+                  value="{{ Auth::user()->country }}" />
               </div>
+
               <div class="col-md-6">
-                <div class="form-group">
-                  <label for="mobile">Mobile</label>
-                  <input type="text" class="form-control" id="mobile" name="mobile" placeholder="+6289699077651" />
-                </div>
+                <x-input label="Phone Number" type="tel" name="phone_number" placeholder="+6289699077651"
+                  value="{{ Auth::user()->phone_number }}" />
               </div>
             </div>
+
             <div class="row">
               <div class="col text-end">
                 <button type="submit" class="btn btn-success px-5">

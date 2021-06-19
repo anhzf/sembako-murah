@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\Product;
+use App\Http\Controllers\Dashboard\AccountController;
+use App\Http\Controllers\Dashboard\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//   return view('welcome');
-// });
 
 Route::view('/', 'pages.home')
   ->name('home');
@@ -41,14 +38,16 @@ Route::prefix('/dashboard')
     Route::view('/', 'pages.dashboard.index')
       ->name('index');
 
-    Route::view('/account', 'pages.dashboard.account-settings')
+    Route::get('/account', [AccountController::class, 'index'])
       ->name('setting-account');
+
+    Route::post('/account', [AccountController::class, 'saveSettings']);
 
     Route::prefix('/products')
       ->name('products.')
       ->group(function () {
 
-        Route::view('/', 'pages.dashboard.products-list', ['products' => Product::all()])
+        Route::get('/', [ProductController::class, 'index'])
           ->name('index');
 
         Route::view('/add', 'pages.dashboard.products-create')
