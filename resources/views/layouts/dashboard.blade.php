@@ -40,6 +40,9 @@
     </div>
   </div>
 
+
+  @stack('prep-script')
+  @include('includes.script')
   <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
@@ -47,8 +50,6 @@
     });
 
   </script>
-  @stack('prep-script')
-  @include('includes.script')
   @stack('add-script')
 </body>
 

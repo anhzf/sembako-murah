@@ -42,6 +42,21 @@ Route::prefix('/dashboard')
       ->name('setting-account');
 
     Route::post('/account', [AccountController::class, 'saveSettings']);
+    Route::view('/setting', 'pages.dashboard.setting')
+      ->name('setting-toko');
+
+    Route::prefix('/transactions')
+      ->name('transactions.')
+      ->group(function(){
+
+        Route::view('/', 'pages.dashboard.transactions')
+              ->name('index');
+
+        Route::view('/{id}', 'pages.dashboard.transactions-detail')
+              ->name('/detail');
+      });
+
+
 
     Route::prefix('/products')
       ->name('products.')

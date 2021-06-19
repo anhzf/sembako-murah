@@ -4,7 +4,7 @@
         navbar-fixed-top
       " data-aos="fade-down">
   <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{ route('home') }}">
       <img src="/images/logo.svg" alt="" />
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -14,17 +14,18 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
+          <a class="nav-link {{ (request()->is('/')) ? 'active' : '' }}" aria-current="page"
+            href="{{ route('home') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('categories') }}">Categories</a>
+          <a class="nav-link {{ (request()->is('/about')) ? 'active' : '' }}" aria-current="page"
+            href="{{ url('about') }}">About</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-success nav-link px-4 text-white" href="{{ route('login') }}">Sign In</a>
-        </li>
+
+
+      </ul>
+
+
       </ul>
     </div>
   </div>
