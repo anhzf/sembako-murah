@@ -64,7 +64,9 @@
             @if ($model->exists)
               <div class="row mt-2">
                 <div class="col-12">
-                  <button type="submit" form="product__delete" class="btn btn-outline-danger px-5 w-100">
+                  <button type="submit" form="product__delete"
+                    onclick="return confirm('Are you sure you want to delete this product?')"
+                    class="btn btn-outline-danger px-5 w-100">
                     Delete Product
                   </button>
                 </div>
