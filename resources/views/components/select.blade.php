@@ -1,7 +1,7 @@
 @props(['label' => '', 'selectClass' => '', 'id' => Str::uuid(), 'options' => []])
 
 @php
-use Illuminate\View\ComponentAttributeBag;
+use Illuminate\View\ComponentAttributeBag as Attribute;
 
 $_isInvalidInput = isset($attributes['name']) && $errors->has($attributes['name']);
 $_containerAttributes = $attributes->only(['class'])->merge([
@@ -18,9 +18,9 @@ $_value = $attributes['value'] ?? old($attributes['name']);
 <div {!! $_containerAttributes !!}>
   <label for="{{ $id }}">{{ $label }}</label>
   <select {!! $_inputAttributes !!}>
+    <option {{ new Attribute(['selected' => $_value === null, 'disabled' => true]) }}>-----Select one-----</option>
     @foreach ($options as $option)
-      <option
-        {{ new ComponentAttributeBag(['value' => $option['value'], 'selected' => $_value == $option['value']]) }}>
+      <option {{ new Attribute(['value' => $option['value'], 'selected' => $_value == $option['value']]) }}>
         {{ $option['label'] }}
       </option>
     @endforeach

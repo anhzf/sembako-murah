@@ -1,12 +1,13 @@
 @props(['label' => '', 'inputClass' => '', 'id' => Str::uuid()])
 
 @php
+$_isTextarea = $attributes['type'] === 'textarea';
 $_isInvalidInput = isset($attributes['name']) && $errors->has($attributes['name']);
 $_validationClassName = $_isInvalidInput ? 'is-invalid' : '';
 $_containerAttributes = $attributes->only(['class'])->merge([
     'class' => 'form-group',
 ]);
-$_inputAttributes = $attributes->except(['class'])->merge([
+$_inputAttributes = $attributes->except($_isTextarea ? ['class', 'type', 'value'] : ['class'])->merge([
     'label' => $label,
     'id' => $id,
     'class' => "form-control {$inputClass} {$_validationClassName}",
@@ -16,7 +17,13 @@ $_inputAttributes = $attributes->except(['class'])->merge([
 
 <div {!! $_containerAttributes !!}>
   <label for="{{ $id }}">{{ $label }}</label>
-  <input {!! $_inputAttributes !!} />
+  @if ($_isTextarea)
+    <textarea {!! $_inputAttributes !!}>
+      {{ $attributes['value'] ?? old($attributes['name']) }}
+    </textarea>
+  @else
+    <input {!! $_inputAttributes !!} />
+  @endif
 
   {{-- validation message if already --}}
   @if ($_isInvalidInput)
