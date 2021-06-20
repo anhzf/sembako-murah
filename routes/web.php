@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Dashboard\AccountController as DashboardAccountController;
 use App\Http\Controllers\Dashboard\ProductController as DashboardProductController;
+use App\Http\Controllers\ProductController;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,16 +19,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'pages.home')
+Route::get('/', function () {
+  $categoryList = Category::limit(12)->get();
+  $productList = Product::all();
+
+  return view('pages.home', compact('categoryList', 'productList'));
+})
   ->name('home');
 
-Route::view('/categories', 'pages.category')
+Route::get('/categories', [CategoryController::class, 'index'])
   ->name('categories');
 
 Route::view('/about', 'pages.about')
   ->name('about');
 
-Route::view('/details/{id}', 'pages.detail')
+Route::get('/details/{model}', [ProductController::class, 'show'])
   ->name('detail');
 
 Route::view('/cart', 'pages.cart')
