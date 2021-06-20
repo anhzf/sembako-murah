@@ -15,7 +15,7 @@ Detail Page
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="/index.html">Home</a>
+                <a href="{{ url('/') }}">Home</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
                 Products Details
@@ -62,7 +62,7 @@ Detail Page
             <div class="price">Rp 12.000,00</div>
           </div>
           <div class="col-lg-2 d-grid gap-2 d-lg-block" data-aos="zoom-in">
-            <a href="/cart.html" class="btn btn-success px-4 text-white mb-3 me-md-2">
+            <a href="{{ route('cart') }}" class="btn btn-success px-4 text-white mb-3 me-md-2">
               Add to Cart</a>
           </div>
         </div>

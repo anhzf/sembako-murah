@@ -45,7 +45,7 @@ Transactions
                   </div>
                 </div>
               </a>
-              <a href="/dashboard-transactions-details.html" class="card card-list d-block">
+              <a href="{{ url('dashboard/transactions/1') }}" class="card card-list d-block">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-1">
@@ -77,7 +77,7 @@ Transactions
               </a>
             </div>
             <div class="tab-pane fade" id="pills-buy" role="tabpanel" aria-labelledby="pills-buy-tab">
-              <a href="/dashboard-transactions-details.html" class="card card-list d-block">
+              <a href="{{ url('dashboard/transactions/myorder/1') }}" class="card card-list d-block">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-1">

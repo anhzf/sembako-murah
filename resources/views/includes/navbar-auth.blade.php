@@ -18,14 +18,9 @@
             href="{{ route('home') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ (request()->is('/about')) ? 'active' : '' }}" aria-current="page"
+          <a class="nav-link {{ (request()->segment(1)=='about') ? 'active' : '' }}" aria-current="page"
             href="{{ url('about') }}">About</a>
         </li>
-
-
-      </ul>
-
-
       </ul>
     </div>
   </div>

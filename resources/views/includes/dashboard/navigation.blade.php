@@ -19,8 +19,8 @@
         </a>
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{ route('dashboard.index') }}">Dashboard</a>
-
+          {{-- <a class="dropdown-item" href="{{ route('dashboard.index') }}">Dashboard</a> --}}
+          <a class="dropdown-item" href="{{ route('home') }}">Store</a>
           <a class="dropdown-item" href="">Setting</a>
 
           <hr class="dropdown-divider" />

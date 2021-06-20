@@ -6,6 +6,7 @@
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}">
       <img src="/images/logo.svg" alt="" />
+      <span class="ms-3">Toko Sembako Murah</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,13 +23,13 @@
             href="{{ route('categories') }}">Categories</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ (request()->is('/about')) ? 'active' : '' }}" href="{{ url('about') }}">About</a>
+          <a class="nav-link" href="{{ url('about') }}">About</a>
         </li>
 
         @guest
         <li class="nav-item">
 
-          <a class="nav-link{{ (request()->is('/register')) ? 'active' : '' }}" href="{{ route('register') }}">Sign
+          <a class="nav-link" href="{{ route('register') }}">Sign
             Up</a>
         </li>
         <li class="nav-item">
@@ -64,18 +65,18 @@
         <li class="nav-item">
           <a href="{{ route('cart') }}" class="nav-link d-inline-block mt-2">
 
-            {{-- @php --}}
-            {{-- // iki gawenen wan --}}
-            {{-- // yoww --}}
-            {{-- // $carts = \App\Cart::where('users_id', Auth::user()->id)->count(); --}}
-            {{-- @endphp --}}
-            {{-- @if ($carts > 0)
+            @php
+            // iki gawenen wan
+            // yoww
+            $carts = 1;
+            @endphp
+            @if ($carts > 0)
             <img src="/images/shopping-filled.svg" alt="" />
             <div class="card-badge">{{ $carts }}
-            {{-- </div> --}}
-            {{-- @else --}}
-            {{-- <img src="/images/shopping-empty.svg" alt="" /> --}}
-            {{-- @endif --}}
+            </div>
+            @else
+            <img src="/images/shopping-empty.svg" alt="" />
+            @endif
           </a>
         </li>
       </ul>

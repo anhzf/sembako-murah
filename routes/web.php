@@ -21,7 +21,10 @@ Route::view('/', 'pages.home')
 Route::view('/categories', 'pages.category')
   ->name('categories');
 
-Route::view('/details/{id}', 'pages.details')
+Route::view('/about', 'pages.about')
+  ->name('about');
+
+Route::view('/details/{id}', 'pages.detail')
   ->name('detail');
 
 Route::view('/cart', 'pages.cart')
@@ -40,8 +43,8 @@ Route::prefix('/dashboard')
 
     Route::get('/account', [AccountController::class, 'index'])
       ->name('setting-account');
-
     Route::post('/account', [AccountController::class, 'saveSettings']);
+
     Route::view('/setting', 'pages.dashboard.setting')
       ->name('setting-toko');
 
@@ -54,6 +57,8 @@ Route::prefix('/dashboard')
 
         Route::view('/{id}', 'pages.dashboard.transactions-detail')
               ->name('/detail');
+        Route::view('/myorder/{id}', 'pages.dashboard.transactions-myorder')
+              ->name('/myorder-detail');
       });
 
 
