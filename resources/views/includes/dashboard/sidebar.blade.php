@@ -1,27 +1,26 @@
 @php
-$navClassName = fn(string $to) => 'list-group-item list-group-item-action' . ($to === url()->current() ? ' active' :
-'');
+$navClassName = fn(string $to) => 'list-group-item list-group-item-action' . ($to === url()->current() ? ' active' : '');
 $navItems = [
-[
-'label' => 'Dashboard',
-'to' => route('dashboard.index'),
-],
-[
-'label' => 'My Products',
-'to' => route('dashboard.products.index'),
-],
-[
-'label' => 'Transactions',
-'to' => route('dashboard.transactions.index'),
-],
-[
-'label' => 'My Account',
-'to' => route('dashboard.setting-account'),
-],
-[
-'label' => 'Store Setting',
-'to' => route('dashboard.setting-toko'),
-],
+    [
+        'label' => 'Dashboard',
+        'to' => route('dashboard.index'),
+    ],
+    [
+        'label' => 'My Products',
+        'to' => route('dashboard.products.index'),
+    ],
+    [
+        'label' => 'Transactions',
+        'to' => route('dashboard.transactions.index'),
+    ],
+    [
+        'label' => 'My Account',
+        'to' => route('dashboard.setting-account'),
+    ],
+    [
+        'label' => 'Store Setting',
+        'to' => route('dashboard.setting-toko'),
+    ],
 ];
 @endphp
 
@@ -32,7 +31,7 @@ $navItems = [
 
   <div class="list-group list-group-flush">
     @foreach ($navItems as $navItem) <a href="{{ $navItem['to'] }}"
-      class="{{ $navClassName($navItem['to']) }}">{{ $navItem['label'] }}</a>
+        class="{{ $navClassName($navItem['to']) }}">{{ $navItem['label'] }}</a>
     @endforeach
 
     <form method="POST" action="{{ route('logout') }}">

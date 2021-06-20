@@ -1,61 +1,81 @@
 @extends('layouts.dashboard')
 
-@section('dashboard-title')
-  Kurma Arab
-@endsection
+@section('dashboard-title', $model->getFullname() ?? 'Add Product')
 
-@section('dashboard-subtitle')
-  Product Details
-@endsection
+@section('dashboard-subtitle', 'Product Details')
+
+  @php
+  $categories = $categoryList
+      ->map(
+          fn($item) => [
+              'value' => $item->getKey(),
+              'label' => $item->name,
+          ],
+      )
+      ->all();
+  @endphp
 
 @section('content')
+  @if ($model->exists)
+    <form method="POST" id="product__delete"
+      action="{{ route('dashboard.products.destroy', ['model' => $model->getKey()]) }}" class="d-none">
+      @method('DELETE')
+      @csrf
+    </form>
+  @endif
+
   <div class="row">
     <div class="col-12">
-      <form action="">
+      <form method="POST" action="{{ $action }}">
+        @csrf
+
         <div class="card">
           <div class="card-body">
             <div class="row">
               <div class="col-md-6">
-                <div class="form-group">
-                  <label for="">Product Name</label>
-                  <input type="text" name="" class="form-control" placeholder="Kurma Arab" />
-                </div>
+                <x-input label="Product Name" type="text" name="name" placeholder="Kurma Arab"
+                  :value="$model->name ?? old('name')" />
               </div>
+
               <div class="col-md-6">
-                <div class="form-group">
-                  <label for="">Price</label>
-                  <input type="number" name="" class="form-control" placeholder="Rp 150.000" />
-                </div>
+                <x-input label="Price" type="number" name="price" placeholder="Rp 150.000"
+                  :value="$model->price ?? old('price')" />
               </div>
+
               <div class="col-md-12 mt-1">
-                <div class="form-group">
-                  <label for="">Kategori</label>
-                  <select name="category" id="" class="form-control form-select">
-                    <option value="" disabled>
-                      Select Category
-                    </option>
-                  </select>
-                </div>
+                <x-select label="Kategori" name="category_id" :options="$categories"
+                  :value="$model->category_id ?? old('category_id')" />
               </div>
+
               <div class="col-md-12 mt-2">
-                <div class="form-group">
-                  <label for="">Description</label>
-                  <textarea name="editor" id=""></textarea>
-                </div>
+                <x-input label="Description" type="textarea" name="description" id="product__description"
+                  :value="$model->description ?? old('description')" html />
               </div>
             </div>
+
             <div class="row mt-2">
               <div class="col-12">
                 <button type="submit" class="btn btn-success px-5 w-100">
-                  Update Product
+                  Save Product
                 </button>
               </div>
             </div>
+
+            @if ($model->exists)
+              <div class="row mt-2">
+                <div class="col-12">
+                  <button type="submit" form="product__delete" class="btn btn-outline-danger px-5 w-100">
+                    Delete Product
+                  </button>
+                </div>
+              </div>
+            @endif
           </div>
         </div>
       </form>
     </div>
   </div>
+
   <div class="row mt-4">
     <div class="col-12">
       <div class="card">
@@ -71,6 +91,7 @@
                 </div>
               </div>
             </div>
+
             <div class="col-md-4 mb-3">
               <div class="gallery-container position-relative">
                 <img src="/images/product-details-4.jpg" alt="" class="w-100" />
@@ -81,6 +102,7 @@
                 </div>
               </div>
             </div>
+
             <div class="col-md-4 mb-3">
               <div class="gallery-container position-relative">
                 <img src="/images/product-maduarab.jpg" alt="" class="w-100" />
@@ -91,6 +113,7 @@
                 </div>
               </div>
             </div>
+
             <div class="col-md-4 mb-3">
               <div class="gallery-container position-relative">
                 <img src="/images/product-details-1.jpg" alt="" class="w-100" />
@@ -102,6 +125,7 @@
               </div>
             </div>
           </div>
+
           <div class="row">
             <div class="col-12">
               <input type="file" id="file" style="display: none" multiple />
@@ -121,12 +145,11 @@
   <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
   <script>
     function thisFileUpload() {
-      document.getElementById("file").click();
+      document.getElementById('file').click();
     }
 
-  </script>
-  <script>
-    CKEDITOR.replace("editor");
-
+    document.addEventListener('DOMContentLoaded', function() {
+      CKEDITOR.replace('product__description');
+    });
   </script>
 @endpush

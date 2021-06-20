@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Dashboard\AccountController;
-use App\Http\Controllers\Dashboard\ProductController;
+use App\Http\Controllers\Dashboard\AccountController as DashboardAccountController;
+use App\Http\Controllers\Dashboard\ProductController as DashboardProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,40 +41,48 @@ Route::prefix('/dashboard')
     Route::view('/', 'pages.dashboard.index')
       ->name('index');
 
-    Route::get('/account', [AccountController::class, 'index'])
+    Route::get('/account', [DashboardAccountController::class, 'index'])
       ->name('setting-account');
-    Route::post('/account', [AccountController::class, 'saveSettings']);
+    Route::post('/account', [DashboardAccountController::class, 'saveSettings']);
 
     Route::view('/setting', 'pages.dashboard.setting')
       ->name('setting-toko');
 
+
     Route::prefix('/transactions')
       ->name('transactions.')
-      ->group(function(){
+      ->group(function () {
 
         Route::view('/', 'pages.dashboard.transactions')
-              ->name('index');
+          ->name('index');
 
         Route::view('/{id}', 'pages.dashboard.transactions-detail')
-              ->name('/detail');
-        Route::view('/myorder/{id}', 'pages.dashboard.transactions-myorder')
-              ->name('/myorder-detail');
-      });
+          ->name('/detail');
 
+        Route::view('/myorder/{id}', 'pages.dashboard.transactions-myorder')
+          ->name('/myorder-detail');
+      });
 
 
     Route::prefix('/products')
       ->name('products.')
       ->group(function () {
 
-        Route::get('/', [ProductController::class, 'index'])
+        Route::get('/', [DashboardProductController::class, 'index'])
           ->name('index');
 
-        Route::view('/add', 'pages.dashboard.products-create')
-          ->name('add');
+        Route::get('/add', [DashboardProductController::class, 'create'])
+          ->name('create');
+        Route::post('/add', [DashboardProductController::class, 'store'])
+          ->name('store');
 
-        Route::view('/{id}', 'pages.dashboard.products-detail')
-          ->name('detail');
+        Route::get('/{model}', [DashboardProductController::class, 'show'])
+          ->name('show');
+        Route::post('/{model}', [DashboardProductController::class, 'update'])
+          ->name('update');
+
+        Route::delete('/{model}', [DashboardProductController::class, 'destroy'])
+          ->name('destroy');
       });
   });
 

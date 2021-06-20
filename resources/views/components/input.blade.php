@@ -19,7 +19,11 @@ $_inputAttributes = $attributes->except($_isTextarea ? ['class', 'type', 'value'
   <label for="{{ $id }}">{{ $label }}</label>
   @if ($_isTextarea)
     <textarea {!! $_inputAttributes !!}>
+      @if ($attributes['html'])
+      {!! $attributes['value'] ?? old($attributes['name']) !!}
+      @else
       {{ $attributes['value'] ?? old($attributes['name']) }}
+      @endif
     </textarea>
   @else
     <input {!! $_inputAttributes !!} />

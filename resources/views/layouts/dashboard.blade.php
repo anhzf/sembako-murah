@@ -27,10 +27,14 @@
         <!-- Section Content -->
         <div class="section-content section-dashboard-home" data-aos="fade-up">
           <div class="container-fluid">
+
             <div class="dashboard-heading">
               <h2 class="dashboard-title">@yield('dashboard-title')</h2>
               <p class="dashboard-subtitle">@yield('dashboard-subtitle')</p>
             </div>
+
+            @include('includes.notifications')
+
             <div class="dashboard-content">
               @yield('content')
             </div>
@@ -48,7 +52,6 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
-
   </script>
   @stack('add-script')
 </body>

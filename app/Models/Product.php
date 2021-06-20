@@ -4,10 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @method static \App\Models\Product create(array $attributes = [])
+ *
+ * @see \Illuminate\Database\Eloquent\Builder
+ */
 class Product extends Model
 {
-  use HasFactory;
+  use HasFactory,
+    SoftDeletes;
 
   /**
    * The attributes that should be cast.
@@ -41,6 +48,7 @@ class Product extends Model
   protected function getDefaultAttributes()
   {
     return [
+      'photos' => [],
       'meta' => [],
     ];
   }
@@ -51,5 +59,10 @@ class Product extends Model
   public function category()
   {
     return $this->belongsTo(Category::class);
+  }
+
+  public function getFullname()
+  {
+    return "{$this->name}#{$this->getKey()}";
   }
 }

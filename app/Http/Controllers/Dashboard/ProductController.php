@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
+use App\Helpers\UI;
+use App\Http\Controllers\ProductController as ControllersProductController;
+use App\Http\Requests\ProductPostRequest;
+use App\Models\Category;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ProductController extends ControllersProductController
 {
   /**
    * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
    */
   public function index()
   {
@@ -22,67 +22,77 @@ class ProductController extends Controller
 
   /**
    * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
    */
   public function create()
   {
-    //
+    $model = new Product();
+    $action = route('dashboard.products.store');
+    $categoryList = Category::all();
+
+    return view('pages.dashboard.products-form', compact('model', 'action', 'categoryList'));
   }
 
   /**
    * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(ProductPostRequest $request)
   {
-    //
+    $product = parent::store($request);
+
+    UI::notifySuccess("Successfully created {$product->getFullname()}");
+    return redirect()
+      ->route('dashboard.products.index');
   }
 
   /**
    * Display the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
    */
-  public function show($id)
+  public function show(Product $model)
   {
-    //
+    $action = route('dashboard.products.update', ['model' => $model->getKey()]);
+    $categoryList = Category::all();
+
+    return view('pages.dashboard.products-form', compact('model', 'action', 'categoryList'));
   }
 
   /**
    * Show the form for editing the specified resource.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
    */
-  public function edit($id)
+  public function edit(Product $product)
   {
-    //
+    return redirect()
+      ->action([self::class, 'show']);
   }
 
   /**
    * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(ProductPostRequest $request, Product $model)
   {
-    //
+    if (parent::update($request, $model)) {
+      UI::notifySuccess("Successfully updated {$model->getFullname()}");
+      return redirect()
+        ->route('dashboard.products.index');
+    }
+
+    UI::notifyWarning("Failed to update {$model->getFullname()}");
+    return redirect()
+      ->route('dashboard.products.index');
   }
 
   /**
    * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
+  public function destroy(Product $model)
   {
-    //
+    if (parent::destroy($model)) {
+      UI::notifySuccess("Successfully deleted {$model->getFullname()}");
+      return redirect()
+        ->route('dashboard.products.index');
+    }
+
+    UI::notifyWarning("Failed to delete {$model->getFullname()}");
+    return redirect()
+      ->route('dashboard.products.index');
   }
 }
