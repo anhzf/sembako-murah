@@ -13,7 +13,7 @@
 | ----------------------- | -------- |
 | Alwan Nuha Zaky Fadhila | K3519010 |
 | Alvin Kurniawan         | K35190XX |
-| Fahmi Habibi            | K35190XX |
+| Ramadhan Fahmi Habibi   | K3519070 |
 | Hamid Yahya             | K35190XX |
 
 ## About Laravel
