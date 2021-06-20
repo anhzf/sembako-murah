@@ -7,6 +7,15 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Anggota Kelompok
+
+| Nama                    | NIM      |
+| ----------------------- | -------- |
+| Alwan Nuha Zaky Fadhila | K3519010 |
+| Alvin Kurniawan         | K35190XX |
+| Fahmi Habibi            | K35190XX |
+| Hamid Yahya             | K35190XX |
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
