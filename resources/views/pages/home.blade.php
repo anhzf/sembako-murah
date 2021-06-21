@@ -2,10 +2,6 @@
 
 @extends('layouts.front')
 
-@section('title')
-  Sembako Murah
-@endsection
-
 @section('content')
   {{-- Page Content --}}
   <div class="page-content page-home">

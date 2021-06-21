@@ -1,8 +1,9 @@
 @inject('formatter', '\App\Helpers\Formatter');
+@inject('store', '\App\Models\Store');
 
 @extends('layouts.front')
 
-@section('title', "{$model->name} - Sembako Murah")
+@section('title', "{$model->name} - {$store->getName()}")
 
   @php
   $photos = collect(collect($model->photos)->count() ? $model->photos : ['https://via.placeholder.com/200?' . Arr::query(['text' => 'No image'])]);

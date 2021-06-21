@@ -3,12 +3,10 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Dashboard\AccountController as DashboardAccountController;
 use App\Http\Controllers\Dashboard\ProductController as DashboardProductController;
+use App\Http\Controllers\Dashboard\StoreController as DashboardStoreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
-use App\Models\Category;
-use App\Models\Product;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,8 +49,9 @@ Route::prefix('/dashboard')
       ->name('setting-account');
     Route::post('/account', [DashboardAccountController::class, 'saveSettings']);
 
-    Route::view('/setting', 'pages.dashboard.setting')
+    Route::get('/setting', [DashboardStoreController::class, 'edit'])
       ->name('setting-toko');
+    Route::post('/setting', [DashboardStoreController::class, 'update']);
 
 
     Route::prefix('/transactions')
