@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductPostRequest;
 use App\Models\Product;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
@@ -74,5 +75,10 @@ class ProductController extends Controller
     Gate::authorize('organize-product');
 
     return $model->delete();
+  }
+
+  public function storePhoto(Request $request)
+  {
+    // $request->fil
   }
 }

@@ -1,10 +1,12 @@
+@inject('store', '\App\Models\Store')
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@yield('title')</title>
+  <title>@yield('title', $store->getName())</title>
 
   {{-- Add Style --}}
   @stack('prep-style')
@@ -14,7 +16,7 @@
 
 <body>
   {{-- Navigation Bar --}}
-  @include('includes.navbar')
+  @include('includes.navbar', compact('store'))
 
   {{-- Page Content --}}
   @yield('content')

@@ -6,7 +6,7 @@
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}">
       <img src="/images/logo.svg" alt="" />
-      <span class="ms-3">Toko Sembako Murah</span>
+      <span class="ms-3">{{ $store->getName() }}</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +19,7 @@
             href="{{ route('home') }}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ (request()->segment(1) == 'categories') ? 'active' : '' }}"
+          <a class="nav-link {{ request()->segment(1) == 'categories' ? 'active' : '' }}"
             href="{{ route('categories') }}">Categories</a>
         </li>
         <li class="nav-item">
@@ -61,7 +61,29 @@
               @csrf
             </form>
           </div>
+          @else
+          <img src="/images/shopping-empty.svg" alt="" />
+          @endif
+          </a>
         </li>
+      </ul>
+      <!-- + Dropdown -->
+      <ul class="navbar-nav d-block d-lg-none">
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            Hi, {{ Auth::user()->name }}
+          </a>
+        </li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('dashboard.index') }}" class="nav-link d-inline-block">Dashboard</a>
+        </li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
         <li class="nav-item">
           <a href="{{ route('cart') }}" class="nav-link d-inline-block mt-2">
 
@@ -86,15 +108,6 @@
           <a href="#" class="nav-link">
             Hi, {{ Auth::user()->name }}
           </a>
-        </li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('dashboard.index') }}" class="nav-link d-inline-block">Dashboard</a>
-        </li>
-        <li>
-          <hr class="dropdown-divider">
         </li>
         <li class="nav-item">
           <a href="{{ route('cart') }}" class="nav-link d-inline-block">Cart</a>

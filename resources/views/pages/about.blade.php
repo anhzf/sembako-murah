@@ -1,9 +1,5 @@
 @extends('layouts.about')
 
-@section('title')
-About Page
-@endsection
-
 @push('style')
 
 @endpush

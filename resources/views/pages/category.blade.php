@@ -1,8 +1,8 @@
+@inject('store', '\App\Models\Store')
+
 @extends('layouts.front')
 
-@section('title')
-  Categories
-@endsection
+@section('title', "Category - {$store->getName()}")
 
 @section('content')
   {{-- Page Content --}}

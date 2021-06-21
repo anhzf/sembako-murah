@@ -65,4 +65,8 @@ class Product extends Model
   {
     return "{$this->name}#{$this->getKey()}";
   }
+
+  public function addPhoto()
+  {
+  }
 }
