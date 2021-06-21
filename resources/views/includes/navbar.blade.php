@@ -61,10 +61,7 @@
               @csrf
             </form>
           </div>
-          @else
-          <img src="/images/shopping-empty.svg" alt="" />
-          @endif
-          </a>
+
         </li>
       </ul>
       <!-- + Dropdown -->
@@ -100,17 +97,6 @@
             <img src="/images/shopping-empty.svg" alt="" />
             @endif
           </a>
-        </li>
-      </ul>
-      <!-- + Dropdown -->
-      <ul class="navbar-nav d-block d-lg-none">
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            Hi, {{ Auth::user()->name }}
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('cart') }}" class="nav-link d-inline-block">Cart</a>
         </li>
       </ul>
       @endauth
