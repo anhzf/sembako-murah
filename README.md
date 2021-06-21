@@ -56,11 +56,11 @@ php artisan serve
 
 - Login Flowchart
 
-<p align="center"> <img src="/doc/login.jpg"></img> </p>
+<p align="center"> <img src="/doc/login.JPG"></img> </p>
 
 - Register Flowchart
 
-<p align="center"> <img src="/doc/register.jpg"></img> </p>
+<p align="center"> <img src="/doc/register.JPG"></img> </p>
 
 ## Division of Tasks
 
