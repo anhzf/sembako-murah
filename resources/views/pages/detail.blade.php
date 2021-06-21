@@ -2,9 +2,11 @@
 
 @extends('layouts.front')
 
-@section('title')
-  Detail Page
-@endsection
+@section('title', "{$model->name} - Sembako Murah")
+
+  @php
+  $photos = collect(collect($model->photos)->count() ? $model->photos : ['https://via.placeholder.com/200?' . Arr::query(['text' => 'No image'])]);
+  @endphp
 
 @section('content')
   {{-- Page Content --}}
@@ -17,7 +19,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="{{ url('/') }}">Home</a>
+                  <a href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
                   Products Details
@@ -167,7 +169,7 @@
       },
       data: {
         activePhoto: 0,
-        photos: @json(collect($model->photos)),
+        photos: @json($photos),
       },
       methods: {
         changeActive(id) {

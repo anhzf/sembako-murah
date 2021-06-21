@@ -34,9 +34,7 @@ class AccountController extends Controller
 
     $validator->validate();
 
-    /**
-     * @var \App\Models\User
-     */
+    /** @var \App\Models\User */
     $user = $request->user();
 
     $user->update($postData);

@@ -109,7 +109,8 @@
                   @if (isset($product->photos[0]))
                     <img src="{{ $product->photos[0] }}" alt="" class="products-image">
                   @else
-                    <img src="https://via.placeholder.com/200" alt="" class="products-image">
+                    <img src="https://via.placeholder.com/200?{{ Arr::query(['text' => 'No image']) }}" alt=""
+                      class="products-image">
                   @endif
                 </div>
                 <div class="products-text">{{ $product->name }}</div>
