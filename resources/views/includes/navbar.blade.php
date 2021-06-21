@@ -87,6 +87,15 @@
             Hi, {{ Auth::user()->name }}
           </a>
         </li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('dashboard.index') }}" class="nav-link d-inline-block">Dashboard</a>
+        </li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
         <li class="nav-item">
           <a href="{{ route('cart') }}" class="nav-link d-inline-block">Cart</a>
         </li>

@@ -1,7 +1,7 @@
 @extends('layouts.about')
 
 @section('title')
-Sembako Murah
+About Page
 @endsection
 
 @push('style')
