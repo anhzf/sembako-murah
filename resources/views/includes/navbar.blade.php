@@ -5,7 +5,7 @@
       " data-aos="fade-down">
   <div class="container">
     <a class="navbar-brand" href="{{ route('home') }}">
-      <img src="/images/logo.png" alt="" />
+      <img src="{{ url('/images/logo.png') }}" alt="" />
       {{-- <span class="ms-3">{{ $store->getName() }}</span> --}}
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
