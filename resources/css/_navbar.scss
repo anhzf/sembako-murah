@@ -1,5 +1,10 @@
 .navbar-store {
   padding-top: 15px;
+  .navbar-brand {
+    img{
+      max-height: 50px;
+    }
+  }
 
   //   background navbar berwarna putih ketika browser berukuran medium
   @include media-breakpoint-down(lg) {
@@ -9,6 +14,9 @@
   .nav-item {
     .nav-link {
       // jika berukuran lg, diberi margin left dan right
+      &.active {
+        color: #FF7158;
+      }
       @include media-breakpoint-up(lg) {
         margin-left: 10px;
         margin-right: 10px;
