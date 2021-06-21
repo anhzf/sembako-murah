@@ -28,7 +28,13 @@
     }
   }
 
-
+  #wrapper {
+    &.toggled {
+      #sidebar-wrapper {
+        margin-left: 0;
+      }
+    }
+  }
 
   .navbar-store {
     margin-top: 0;

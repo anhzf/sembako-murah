@@ -9,12 +9,16 @@
     margin-top: 20px;
 
     img {
+      object-fit: cover;
       border-radius: 10px;
+      max-height: 500px;
     }
 
     .thumbnail-image {
       margin-bottom: 20px;
       border: 2px solid transparent;
+      max-height: 100px;
+
 
       &:hover,
       &.active {
@@ -61,6 +65,7 @@
   .store-review {
     .media {
       img {
+
         max-width: 50px;
       }
     }

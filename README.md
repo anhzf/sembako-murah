@@ -49,4 +49,24 @@ Untuk menjalankan server lakukan command berikut:
 ```bash
 php artisan serve
 ```
+## Functional  Requirement
 
+## Critical Assumption
+## Flowchart Diagram
+
+- Login Flowchart
+
+<p align="center"> <img src="doc/login.jpg"></img> </p>
+
+- Register Flowchart
+
+<p align="center"> <img src="doc/register.jpg"></img> </p>
+
+## Division of Tasks
+
+| Nama                    | Division      |  Task    |
+| ----------------------- | ------------- | -------- |
+| Alvin Kurniawan         | Documentation | Make a good documentation |
+| Alwan Nuha Zaky Fadhila | Backend Dev   | create web application logic on the server and integrate it with the front end |
+| Hamid Yahya             | Designer      | Design good picture and logo |
+| Ramadhan Fahmi Habibi   | Frontend Dev  | Design good viewpage for customer and store admin |
