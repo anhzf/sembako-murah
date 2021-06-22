@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -103,6 +104,24 @@ class ProductController extends Controller
 
   public function deletePhoto(Request $request, Product $model)
   {
-    dd($request->all());
+    $deletedPath = $request->get('photo');
+    $isStorage = Storage::exists($deletedPath);
+    $isUrl = boolval(filter_var($deletedPath, FILTER_VALIDATE_URL));
+
+    // dd(get_defined_vars());
+    if ($isStorage ? Storage::delete($deletedPath) : $isUrl) {
+      $newPhotos = collect($model->photos)
+        ->filter(fn ($path) => $path !== $deletedPath)
+        ->all();
+
+      $model->photos = $newPhotos;
+      $model->saveOrFail();
+
+      UI::notifySuccess("Successfully deleted photo for {$model->getFullname()}");
+    } else {
+      UI::notifyError("Error deleting photo for {$model->getFullname()}");
+    }
+
+    return redirect()->back();
   }
 }

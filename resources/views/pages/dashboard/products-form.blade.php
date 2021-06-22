@@ -13,9 +13,9 @@
           ],
       )
       ->all();
-  @endphp
 
-  {{-- @dd($model) --}}
+  $photos = collect($model->photos)->zip($model->getPhotosUrl());
+  @endphp
 
 @section('content')
   @if ($model->exists)
@@ -85,11 +85,10 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
-            @foreach ($model->getPhotosUrl() as $photo)
+            @foreach ($photos as [$photo, $photoUrl])
               <div class="col-md-4 mb-3">
                 <div class="gallery-container position-relative">
-                  <pre>{{ $photo }}</pre>
-                  <img src="{{ $photo }}" alt="{{ $photo }}" class="w-100" />
+                  <img src="{{ $photoUrl }}" alt="{{ $photoUrl }}" class="w-100" />
                   <div class="position-absolute delete-gallery">
                     <button type="submit" class="text-danger" form="product__photoDeleteForm" name="photo"
                       value="{{ $photo }}">
