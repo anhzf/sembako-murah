@@ -50,17 +50,27 @@ Untuk menjalankan server lakukan command berikut:
 php artisan serve
 ```
 ## Functional  Requirement
+- Admin toko diberikan akses ke seluruh aplikasi agar bisa mengelola aplikasi
+- User hanya dapat mengakses beberapa fitur yang ada.
 
 ## Critical Assumption
+- Dengan adanya Web Sembako Murah akan membuat pelanggan jadi lebih mudah untuk memesan bahan panganan pokok di mana saja dan kapan saja.
+- Pengguna web adalah seorang user/pembeli dan juga seorang admin toko/penjual.
+- 
+
 ## Flowchart Diagram
 
 - Login Flowchart
 
-<p align="center"> <img src="doc/login.jpg"></img> </p>
+<p align="center"> <img src="/doc/login.JPG"></img> </p>
 
 - Register Flowchart
 
-<p align="center"> <img src="doc/register.jpg"></img> </p>
+<p align="center"> <img src="/doc/register.JPG"></img> </p>
+
+- Buy Flowchart
+
+- 
 
 ## Division of Tasks
 

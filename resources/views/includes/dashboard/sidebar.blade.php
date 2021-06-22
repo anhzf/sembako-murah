@@ -28,7 +28,7 @@ $navItems = [
 <div class="wrapper" id="wrapper">
   <div class="border-end" id="sidebar-wrapper">
     <div class="sidebar-heading text-center">
-      <img src="/images/logo.svg" alt="" class="my-4" />
+      <img src="{{ url('/images/logo.png') }}" alt="" class="my-4" />
     </div>
 
     <div class="list-group list-group-flush">
