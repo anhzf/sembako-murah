@@ -67,7 +67,8 @@
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col-md-auto" data-aos="fade-up">
-          <p class="text-center">Website ini merupakan sebuah website yang melayani penjualan berbagai macam jenis dam
+          <p class="text-center text-about">Website ini merupakan sebuah website yang melayani penjualan berbagai macam
+            jenis dam
             merek sembako yang dibutuhkan oleh masyarakat setiap harinya. penjualan dilakukan dengan cara dalam jaringan
             mengingat penyebaran virus korona yang belum juga untuk berhenti. dengan adanya website ini diharapkan dapat
             membantu masyarakat untuk memenuhi kebutuhan sembakonya dengan tidak melanggar protokol kesehatan yang
@@ -98,7 +99,7 @@
         <div class="col-md-auto" data-aos="fade-up">
 
           <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
-            <img src="{{ url('/images/user_pc.svg') }}" class="card-img-top" alt="...">
+            <img src="{{ url('/images/profil_nuha.png') }}" class="card-img-top" alt="...">
             <div class="card-header text-center">
               Backend Dev
             </div>
@@ -142,7 +143,7 @@
         {{-- profile 2 --}}
         <div class="col-md-auto" data-aos="fade-up">
           <div class="card text-white bg-primary mb-3" style="width: 18rem;">
-            <img src="{{ url('/images/user_pc.svg') }}" class="card-img-top" alt="...">
+            <img src="{{ url('/images/profil_fahmi.png') }}" class="card-img-top rounded-5" alt="...">
             <div class="card-header text-center">
               Frontend Dev
             </div>
