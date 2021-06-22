@@ -98,7 +98,7 @@
         {{-- profile 1 --}}
         <div class="col-md-auto" data-aos="fade-up">
 
-          <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+          <div class="card text-white bg-secondary mb-3 card-profile" style="width: 18rem;">
             <img src="{{ url('images/profil_nuha.png') }}" class="card-img-top" alt="...">
             <div class="card-header text-center">
               Backend Dev
