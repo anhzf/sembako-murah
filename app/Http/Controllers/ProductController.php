@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\UI;
 use App\Http\Requests\ProductPostRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
@@ -77,8 +79,30 @@ class ProductController extends Controller
     return $model->delete();
   }
 
-  public function storePhoto(Request $request)
+  public function storePhotos(Request $request, Product $model)
   {
-    // $request->fil
+    Gate::authorize('organize-product');
+
+    $photos = $request->file('photos');
+    $paths = collect(is_array($photos) ? $photos : [$photos])
+      ->map(fn (UploadedFile $file) => $file->storePublicly($model->getStoragePath()));
+    $savedPaths = $paths->filter();
+
+    $model->photos = [...$model->photos, ...$savedPaths->all()];
+
+    $success = $savedPaths->isNotEmpty() && $model->save();
+
+    if ($success) {
+      UI::notifyError("Error when adding photo to {$model->getFullname()}");
+    } else {
+      UI::notifySuccess("Successfully added photo to {$model->getFullname()}");
+    }
+
+    return $success;
+  }
+
+  public function deletePhoto(Request $request, Product $model)
+  {
+    dd($request->all());
   }
 }

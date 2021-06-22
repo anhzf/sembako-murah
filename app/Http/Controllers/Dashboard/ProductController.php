@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController as ControllersProductController;
 use App\Http\Requests\ProductPostRequest;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends ControllersProductController
 {
@@ -49,7 +50,7 @@ class ProductController extends ControllersProductController
    */
   public function show(Product $model)
   {
-    $action = route('dashboard.products.update', ['model' => $model->getKey()]);
+    $action = route('dashboard.products.update', ['model' => $model]);
     $categoryList = Category::all();
 
     return view('pages.dashboard.products-form', compact('model', 'action', 'categoryList'));
@@ -94,5 +95,12 @@ class ProductController extends ControllersProductController
     UI::notifyWarning("Failed to delete {$model->getFullname()}");
     return redirect()
       ->route('dashboard.products.index');
+  }
+
+  public function storePhotos(Request $request, Product $model)
+  {
+    parent::storePhotos($request, $model);
+
+    return redirect()->back();
   }
 }

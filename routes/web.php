@@ -88,6 +88,11 @@ Route::prefix('/dashboard')
 
         Route::delete('/{model}', [DashboardProductController::class, 'destroy'])
           ->name('destroy');
+
+        Route::put('/photo/{model}', [DashboardProductController::class, 'storePhotos'])
+          ->name('store-photos');
+        Route::delete('/photo/{model}', [DashboardProductController::class, 'deletePhoto'])
+          ->name('delete-photo');
       });
   });
 
