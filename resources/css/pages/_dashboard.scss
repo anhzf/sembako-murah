@@ -4,13 +4,6 @@
     min-width: 100vw;
   }
 
-  #wrapper {
-    &.toggled {
-      #sidebar-wrapper {
-        margin-left: 2;
-      }
-    }
-  }
 
   #sidebar-wrapper {
     margin-top: 60px;

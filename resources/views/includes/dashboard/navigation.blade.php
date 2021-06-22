@@ -43,7 +43,10 @@
       <!-- + Dropdown -->
       <ul class="navbar-nav d-block d-lg-none mt-3">
         <li class="nav-item">
-          <a href="#" class="nav-link">{{ Auth::user()->name }}</a>
+          <a class="nav-link" href="{{ route('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('dashboard.index') }}" class="nav-link">{{ Auth::user()->name }}</a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link d-inline-block"> Cart</a>

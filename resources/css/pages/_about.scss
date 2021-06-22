@@ -1,9 +1,9 @@
-.card-img-top {
-  height: 300px;
-  object-fit: cover;
 
-}
 .card-profile {
+    .card-img-top {
+    height:300px;
+    object-fit: cover;
+  }
   &:hover,
     &:focus {
         transform: scale(1.1);
@@ -12,5 +12,6 @@
 }
 .text-about {
   font-weight: 300;
-
 }
+
+
