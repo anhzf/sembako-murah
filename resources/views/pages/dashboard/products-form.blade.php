@@ -80,41 +80,51 @@
     </div>
   </div>
 
-  <div class="row mt-4">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            @foreach ($photos as [$photo, $photoUrl])
-              <div class="col-md-4 mb-3">
-                <div class="gallery-container position-relative">
-                  <img src="{{ $photoUrl }}" alt="{{ $photoUrl }}" class="w-100" />
-                  <div class="position-absolute delete-gallery">
-                    <button type="submit" class="text-danger" form="product__photoDeleteForm" name="photo"
-                      value="{{ $photo }}">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor"
-                        class="bi bi-x-circle-fill" viewBox="0 0 16 16">
-                        <path
-                          d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
-                      </svg>
-                    </button>
+  @if ($model->exists)
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              @foreach ($photos as [$photo, $photoUrl])
+                <div class="col-md-4 mb-3">
+                  <div class="gallery-container position-relative">
+                    <img src="{{ $photoUrl }}" alt="{{ $photoUrl }}" class="w-100" />
+                    <div class="position-absolute delete-gallery">
+                      <button type="submit" class="text-danger" form="product__photoDeleteForm" name="photo"
+                        value="{{ $photo }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor"
+                          class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                          <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            @endforeach
-          </div>
+              @endforeach
+            </div>
 
-          <div class="row">
-            <div class="col-12">
-              <button id="product__photoUploadBtn" class="btn btn-secondary w-100" onclick="selectFile">
-                Add Photo
-              </button>
+            <div class="row">
+              <div class="col-12">
+                <button id="product__photoUploadBtn" class="btn btn-secondary w-100" onclick="selectFile">
+                  Add Photo
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  @else
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="alert alert-warning" role="alert">
+          Please save the product to add photo
+        </div>
+      </div>
+    </div>
+  @endif
 
   @if ($model->exists)
     <form id="product__photoDeleteForm" method="post"
