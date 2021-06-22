@@ -25,12 +25,10 @@ class StoreController extends Controller
       'photo' => 'nullable|image',
     ]);
 
-    dd($validated, $validated['photo']->getClientOriginalName());
-
     if (
       Store::setName($validated['name'])
       && Store::setDescription($validated['description'])
-      && Store::setPhoto($validated['photo'])
+      && (isset($validated['photo']) ? Store::setPhoto($validated['photo']) : true)
     ) {
       UI::notifySuccess('Successfully updated store settings!');
     } else {
