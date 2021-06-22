@@ -26,6 +26,6 @@ class AuthServiceProvider extends ServiceProvider
   {
     $this->registerPolicies();
 
-    Gate::define('organize-product', fn (User $user) => $user->is_admin);
+    Gate::define('organize-store', fn (User $user) => $user->is_admin);
   }
 }

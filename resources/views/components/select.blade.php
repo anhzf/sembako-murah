@@ -20,7 +20,7 @@ $_value = $attributes['value'] ?? old($attributes['name']);
   <select {!! $_inputAttributes !!}>
     <option {{ new Attribute(['selected' => $_value === null, 'disabled' => true]) }}>-----Select one-----</option>
     @foreach ($options as $option)
-      <option {{ new Attribute(['value' => $option['value'], 'selected' => $_value == $option['value']]) }}>
+      <option {{ new Attribute(['value' => $option['value'], 'selected' => $_value == $option['value']] + $option) }}>
         {{ $option['label'] }}
       </option>
     @endforeach

@@ -44,6 +44,15 @@ class AccountController extends Controller
 
   private function getUserCityOptions()
   {
-    return Address::getCities(request()->user()->province_id);
+    $userProvince = request()->user()->province_id;
+    return $userProvince
+      ? Address::getCities($userProvince)
+      : [
+        [
+          'label' => 'Silahkan pilih provinsi kemudian simpan untuk memuat daftar kota',
+          'selected' => true,
+          'disabled' => true,
+        ]
+      ];
   }
 }

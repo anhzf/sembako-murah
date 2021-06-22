@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\ProductController as DashboardProductControll
 use App\Http\Controllers\Dashboard\StoreController as DashboardStoreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +31,9 @@ Route::view('/about', 'pages.about')
 
 Route::get('/details/{model}', [ProductController::class, 'show'])
   ->name('detail');
+Route::get('/order-now/{model}', [ProductController::class, 'orderNow'])
+  ->middleware('auth')
+  ->name('order-now');
 
 Route::view('/cart', 'pages.cart')
   ->name('cart');
@@ -42,7 +46,9 @@ Route::prefix('/dashboard')
   ->middleware('auth')
   ->group(function () {
 
-    Route::view('/', 'pages.dashboard.index')
+    Route::get('/', fn () => Gate::allows('organize-store')
+      ? view('pages.dashboard.index')
+      : redirect()->route('dashboard.setting-account'))
       ->name('index');
 
     Route::get('/account', [DashboardAccountController::class, 'index'])
@@ -88,6 +94,11 @@ Route::prefix('/dashboard')
 
         Route::delete('/{model}', [DashboardProductController::class, 'destroy'])
           ->name('destroy');
+
+        Route::put('/photo/{model}', [DashboardProductController::class, 'storePhotos'])
+          ->name('store-photos');
+        Route::delete('/photo/{model}', [DashboardProductController::class, 'deletePhoto'])
+          ->name('delete-photo');
       });
   });
 

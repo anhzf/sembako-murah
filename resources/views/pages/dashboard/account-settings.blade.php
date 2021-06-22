@@ -13,16 +13,17 @@
 @endsection
 
 @php
-$mapToOptions = function (array $data) {
-    array_walk($data, function (&$item) {
-        $item = [
-            'label' => $item['nama'],
-            'value' => $item['id'],
-        ];
-    });
+$mapToOptions = fn(array $data) => collect($data)
+    ->map(
+        fn($item) => collect($item)
+            ->forget(['id', 'nama'])
+            ->merge([
+                'label' => $item['nama'] ?? ($item['label'] ?? null),
+                'value' => $item['id'] ?? ($item['value'] ?? null),
+            ]),
+    )
+    ->toArray();
 
-    return $data;
-};
 @endphp
 
 @section('content')

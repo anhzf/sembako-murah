@@ -7,7 +7,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@yield('title', $store->getName())</title>
-
+  {{-- Meta --}}
+  <meta name="title" content="@yield('title', $store->getName())" />
+  <meta name="description" content="@yield('description', $store->getDescription() ?? $store->getName())" />
   {{-- Add Style --}}
   @stack('prep-style')
   @include('includes.style')

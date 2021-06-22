@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @method static \App\Models\Product create(array $attributes = [])
@@ -66,7 +67,25 @@ class Product extends Model
     return "{$this->name}#{$this->getKey()}";
   }
 
-  public function addPhoto()
+  public function getStoragePath()
   {
+    return "public/products/{$this->getKey()}";
+  }
+
+  public function getPhotosUrl()
+  {
+    return collect($this->photos)
+      ->map(fn ($path) => Storage::disk('local')->exists($path) ? Storage::url($path) : $path);
+  }
+
+  public function getOrderLink()
+  {
+    /** @var \App\Models\User */
+    $user = request()->user();
+    $query = http_build_query([
+      'text' => "Halo, saya {$user->name} ingin memesan {$this->getFullname()}",
+    ]);
+
+    return "https://wa.me/6289699077651?{$query}";
   }
 }
