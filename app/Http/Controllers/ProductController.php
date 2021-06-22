@@ -93,11 +93,10 @@ class ProductController extends Controller
 
     $success = $savedPaths->isNotEmpty() && $model->save();
 
-    if ($success) {
-      UI::notifyError("Error when adding photo to {$model->getFullname()}");
-    } else {
+    if ($success)
       UI::notifySuccess("Successfully added photo to {$model->getFullname()}");
-    }
+    else
+      UI::notifyError("Error when adding photo to {$model->getFullname()}");
 
     return $success;
   }
@@ -123,5 +122,10 @@ class ProductController extends Controller
     }
 
     return redirect()->back();
+  }
+
+  public function orderNow(Product $model)
+  {
+    return redirect($model->getOrderLink());
   }
 }

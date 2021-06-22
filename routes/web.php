@@ -31,6 +31,9 @@ Route::view('/about', 'pages.about')
 
 Route::get('/details/{model}', [ProductController::class, 'show'])
   ->name('detail');
+Route::get('/order-now/{model}', [ProductController::class, 'orderNow'])
+  ->middleware('auth')
+  ->name('order-now');
 
 Route::view('/cart', 'pages.cart')
   ->name('cart');

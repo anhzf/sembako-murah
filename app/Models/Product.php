@@ -77,4 +77,15 @@ class Product extends Model
     return collect($this->photos)
       ->map(fn ($path) => Storage::disk('local')->exists($path) ? Storage::url($path) : $path);
   }
+
+  public function getOrderLink()
+  {
+    /** @var \App\Models\User */
+    $user = request()->user();
+    $query = http_build_query([
+      'text' => "Halo, saya {$user->name} ingin memesan {$this->getFullname()}",
+    ]);
+
+    return "https://wa.me/6289699077651?{$query}";
+  }
 }
