@@ -99,7 +99,7 @@
         <div class="col-md-auto" data-aos="fade-up">
 
           <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
-            <img src="{{ url('/images/profil_nuha.png') }}" class="card-img-top" alt="...">
+            <img src="{{ url('images/profil_nuha.png') }}" class="card-img-top" alt="...">
             <div class="card-header text-center">
               Backend Dev
             </div>

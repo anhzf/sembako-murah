@@ -19,15 +19,15 @@
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="/images/banner.jpg" class="d-block w-100" alt="Carousel Image 1" />
+                <img src="{{ url('/images/banner.jpg') }}" class="d-block w-100" alt="Carousel Image 1" />
 
               </div>
               <div class="carousel-item">
-                <img src="/images/banner2.jpg" class="d-block w-100" alt="Carousel Image 2" />
+                <img src="{{ url('/images/banner2.jpg') }}" class="d-block w-100" alt="Carousel Image 2" />
 
               </div>
               <div class="carousel-item">
-                <img src="/images/banner.jpg" class="d-block w-100" alt="Carousel Image 3" />
+                <img src="{{ url('/images/banner.jpg') }}" class="d-block w-100" alt="Carousel Image 3" />
 
               </div>
             </div>
@@ -60,7 +60,7 @@
         <div class="col-6 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="100">
           <a href="{{ route('home', ['category' => $category->slug]) }}" class="component-categories d-block">
             <div class="categories-image">
-              <img src="/images/categories-herbal.svg" alt="" class="w-100" />
+              <img src="{{ url('/images/categories-herbal.svg') }}" alt="" class="w-100" />
             </div>
             <p class="categories-text">{{ $category->name }}</p>
           </a>
