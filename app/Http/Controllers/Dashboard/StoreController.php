@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
+  public function __construct()
+  {
+    $this->authorize('organize-product');
+  }
+
   public function edit()
   {
     return view('pages.dashboard.setting');

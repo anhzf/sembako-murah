@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends ControllersProductController
 {
+  public function __construct()
+  {
+    $this->authorize('organize-product');
+  }
+
   /**
    * Display a listing of the resource.
    */

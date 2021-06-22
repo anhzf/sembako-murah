@@ -13,7 +13,8 @@
     "ui",
     "model",
     "page",
-    "routes"
+    "routes",
+    "security"
   ],
   "bladeFormatter.format.indentSize": 2
 }

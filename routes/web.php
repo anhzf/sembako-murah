@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\ProductController as DashboardProductControll
 use App\Http\Controllers\Dashboard\StoreController as DashboardStoreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,7 +43,9 @@ Route::prefix('/dashboard')
   ->middleware('auth')
   ->group(function () {
 
-    Route::view('/', 'pages.dashboard.index')
+    Route::get('/', fn () => Gate::allows('organize-product')
+      ? view('pages.dashboard.index')
+      : redirect()->route('dashboard.setting-account'))
       ->name('index');
 
     Route::get('/account', [DashboardAccountController::class, 'index'])
