@@ -43,7 +43,7 @@ Route::prefix('/dashboard')
   ->middleware('auth')
   ->group(function () {
 
-    Route::get('/', fn () => Gate::allows('organize-product')
+    Route::get('/', fn () => Gate::allows('organize-store')
       ? view('pages.dashboard.index')
       : redirect()->route('dashboard.setting-account'))
       ->name('index');

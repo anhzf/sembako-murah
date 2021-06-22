@@ -14,7 +14,7 @@ class ProductPostRequest extends FormRequest
    */
   public function authorize()
   {
-    return Gate::allows('organize-product');
+    return Gate::allows('organize-store');
   }
 
   /**

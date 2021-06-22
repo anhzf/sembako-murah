@@ -75,14 +75,14 @@ class ProductController extends Controller
    */
   public function destroy(Product $model)
   {
-    Gate::authorize('organize-product');
+    Gate::authorize('organize-store');
 
     return $model->delete();
   }
 
   public function storePhotos(Request $request, Product $model)
   {
-    Gate::authorize('organize-product');
+    Gate::authorize('organize-store');
 
     $photos = $request->file('photos');
     $paths = collect(is_array($photos) ? $photos : [$photos])

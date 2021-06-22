@@ -5,12 +5,12 @@ $navItems = [
     [
         'label' => 'Dashboard',
         'to' => route('dashboard.index'),
-        'hasAccess' => $gate::allows('organize-product'),
+        'hasAccess' => $gate::allows('organize-store'),
     ],
     [
         'label' => 'My Products',
         'to' => route('dashboard.products.index'),
-        'hasAccess' => $gate::allows('organize-product'),
+        'hasAccess' => $gate::allows('organize-store'),
     ],
     [
         'label' => 'Transactions',
@@ -25,7 +25,7 @@ $navItems = [
     [
         'label' => 'Store Setting',
         'to' => route('dashboard.setting-toko'),
-        'hasAccess' => $gate::allows('organize-product'),
+        'hasAccess' => $gate::allows('organize-store'),
     ],
 ];
 @endphp
