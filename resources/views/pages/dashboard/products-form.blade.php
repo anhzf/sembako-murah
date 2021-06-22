@@ -116,20 +116,22 @@
     </div>
   </div>
 
-  <form id="product__photoDeleteForm" method="post"
-    action="{{ route('dashboard.products.delete-photo', ['model' => $model]) }}" class="d-none">
-    @method('DELETE')
-    @csrf
-  </form>
+  @if ($model->exists)
+    <form id="product__photoDeleteForm" method="post"
+      action="{{ route('dashboard.products.delete-photo', ['model' => $model]) }}" class="d-none">
+      @method('DELETE')
+      @csrf
+    </form>
 
-  <form id="product__photoUploadForm" method="POST"
-    action="{{ route('dashboard.products.store-photos', ['model' => $model]) }}" enctype="multipart/form-data"
-    class="d-none">
-    @method('PUT')
-    @csrf
+    <form id="product__photoUploadForm" method="POST"
+      action="{{ route('dashboard.products.store-photos', ['model' => $model]) }}" enctype="multipart/form-data"
+      class="d-none">
+      @method('PUT')
+      @csrf
 
-    <input type="file" name="photos" id="product__photoSelector" multiple accept="image/*">
-  </form>
+      <input type="file" name="photos" id="product__photoSelector" multiple accept="image/*">
+    </form>
+  @endif
 @endsection
 
 @push('add-script')
