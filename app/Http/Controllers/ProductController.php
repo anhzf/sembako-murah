@@ -111,6 +111,7 @@ class ProductController extends Controller
     if ($isStorage ? Storage::delete($deletedPath) : $isUrl) {
       $newPhotos = collect($model->photos)
         ->filter(fn ($path) => $path !== $deletedPath)
+        ->values()
         ->all();
 
       $model->photos = $newPhotos;
